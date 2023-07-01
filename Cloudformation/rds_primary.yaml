@@ -1,0 +1,152 @@
+AWSTemplateFormatVersion: "2010-09-09"
+
+Description: This template creates an RDS database with MYSQL 5.7
+
+Metadata:
+  AWS::CloudFormation::Interface: 
+    ParameterGroups:
+      - 
+        Label: 
+          default: Subnet and Security Group
+        Parameters:
+          - DBSubnet1
+          - DBSubnet2
+          - DBSubnetGroupName
+          - DBSecurityGroup
+      - 
+        Label: 
+          default: Database Parameters
+        Parameters:
+          - DatabaseInstanceIdentifier
+          - DatabaseName
+          - DatabaseUser
+          - DatabasePassword
+          - DatabaseBackupRetentionPeriod
+          - DatabaseAllocatedStorage
+          - DatabaseInstanceClass
+          - MultiAZDatabase
+
+Parameters:
+  DatabaseInstanceIdentifier:
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9\-]*'
+    ConstraintDescription: Must begin a letter and contain only alpphanumeric characters or hyphen
+    Default: primaryDB
+    Description: Instance identifier name
+    MaxLength: 60
+    MinLength: 1
+    Type: String
+
+  DatabaseName:
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9\-]*'
+    ConstraintDescription: Must begin a letter and contain only alpphanumeric characters or hyphen
+    Default: udacity
+    Description: MySQL database name
+    MaxLength: 64
+    MinLength: 1
+    Type: String
+
+  DatabaseUser:
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9]*'
+    ConstraintDescription: Must begin a letter and contain only alpphanumeric characters
+    Default: admin
+    Description: User name for MySQL database access
+    MaxLength: 16
+    MinLength: 1
+    NoEcho: false
+    Type: String
+
+  DatabasePassword: 
+    AllowedPattern: '[a-zA-Z0-9]*'
+    ConstraintDescription: Must contain only alpphanumeric characters
+    Default: Qweasd123
+    Description: Password for MYSQL database access
+    MaxLength: 24
+    MinLength: 8
+    NoEcho: true
+    Type: String
+
+  DatabaseBackupRetentionPeriod:
+    ConstraintDescription: Database backup retention period between 0 and 35
+    Default: 10
+    Description: The number pf days for which automatic DB snapshots are retained
+    MaxValue: 35
+    MinValue: 0
+    Type: Number
+
+  DatabaseAllocatedStorage:
+    ConstraintDescription: Must be between 5 and 1024 Gb
+    Default: 20
+    Description: The size of database
+    MaxValue: 1024
+    MinValue: 5
+    Type: Number
+
+  DatabaseInstanceClass:
+    AllowedValues:
+      - db.t1.micro
+      - db.t2.micro
+    ConstraintDescription: Select valida database instance type
+    Default: db.t2.micro
+    Description: The database instance type
+    Type: String
+
+  DBSubnetGroupName:
+    AllowedPattern: '[a-zA-Z][a-zA-Z0-9\-]*'
+    ConstraintDescription: Must begin a letter and contain only alpphanumeric characters or hyphen
+    Default: primaryDB-SubnetGroup
+    Description: Database subnet group name
+    Type: String
+
+  DBSubnet1:
+    Description: private subnet 1
+    Type: AWS::EC2::Subnet::Id
+  
+  DBSubnet2:
+    Description: private subnet 2
+    Type: AWS::EC2::Subnet::Id
+    
+  DBSecurityGroup:
+    Description: database instance security group
+    Type: AWS::EC2::SecurityGroup::Id
+
+  MultiAZDatabase:
+    AllowedValues:
+      - true
+      - false
+    ConstraintDescription: Must be either true or false
+    Default: true
+    Description: Creates a Multi-AZ MySQL Amazon RDS database instance
+    Type: String
+
+Resources:   
+  DatabaseSubnetGroup:
+    Type: AWS::RDS::DBSubnetGroup
+    Properties:
+      DBSubnetGroupName: !Ref DBSubnetGroupName
+      DBSubnetGroupDescription: Subnet group for RDS database
+      SubnetIds: 
+        - !Ref DBSubnet1
+        - !Ref DBSubnet2
+      Tags:
+        - Key: Name
+          Value: Database-subnets-group
+
+  DatabaseInstance:
+    Type: AWS::RDS::DBInstance
+    DeletionPolicy: Delete
+    Properties:
+      AllocatedStorage: !Ref DatabaseAllocatedStorage
+      BackupRetentionPeriod: !Ref DatabaseBackupRetentionPeriod
+      DBInstanceClass: !Ref DatabaseInstanceClass
+      DBInstanceIdentifier: !Ref DatabaseInstanceIdentifier
+      DBName: !Ref DatabaseName
+      DBSubnetGroupName: !Ref DatabaseSubnetGroup
+      Engine: MySQL
+      EngineVersion: 5.7.37
+      MasterUsername: !Ref DatabaseUser
+      MasterUserPassword: !Ref DatabasePassword
+      MultiAZ: !Ref MultiAZDatabase
+      VPCSecurityGroups:
+        - !Ref DBSecurityGroup
+
+
