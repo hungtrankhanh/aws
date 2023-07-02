@@ -6,9 +6,9 @@
 
 
 ## Project 1
-* [Part 1: Data Durability And Recovery](#Part-1:-data-durability-and-recovery)
-* [Part 2: Failover And Recovery](#Part-2:-Failover-and-recovery)
-* [Part 3: Web Resiliency](#Part-3:-web-resiliency)
+* [Part 1: Data Durability And Recovery](#part-1:-data-durability-and-recovery)
+* [Part 2: Failover And Recovery](#part-2:-Failover-and-recovery)
+* [Part 3: Web Resiliency](#part-3:-web-resiliency)
 
 ### Part 1: Data Durability And Recovery
 
@@ -20,9 +20,7 @@ Run ./cloudformation/vpc.yaml in region us-east-1
 ![screenshot](./screenshots/primaryVPC_subnets.png)
 
 ![screenshot](./screenshots/primary_subnet_routing.png)
-
 <br />
-
 #### Secondary-VPC
 Run ./cloudformation/vpc.yaml in regions us-west-2
 
@@ -31,10 +29,8 @@ Run ./cloudformation/vpc.yaml in regions us-west-2
 ![screenshot](./screenshots/secondaryVPC_subnets.png)
 
 ![screenshot](./screenshots/secondary_subnet_routing.png)
-
 <br />
-
-### Primary RDS setup
+#### Primary RDS setup
 run ./cloudformation/rds_primary.yaml
 
 ![screenshot](./screenshots/primaryDB_config2.png)
@@ -42,10 +38,8 @@ run ./cloudformation/rds_primary.yaml
 ![screenshot](./screenshots/primaryDB_config.png)
 
 ![screenshot](./screenshots/primaryDB_subnetgroup.png)
-
 <br />
-
-### Primary RDS setup
+#### Primary RDS setup
 run ./cloudformation/rds_secondary.yaml
 
 ![screenshot](./screenshots/secondaryDB_config2.png)
@@ -53,41 +47,31 @@ run ./cloudformation/rds_secondary.yaml
 ![screenshot](./screenshots/secondaryDB_config.png)
 
 ![screenshot](./screenshots/secondaryDB_subnetgroup.png)
-
 <br />
-
-### Availability Estimate
+#### Availability Estimate
 [estimates](logs/estimates.txt)
-
 <br />
-
-### Primary RDS usage
-
+#### Primary RDS usage
 [log_primary](logs/log_primary.txt)
 <br />
-
-### Monitor database
+#### Monitor database
 Observe the “DB Connections” to the database and how this metric changes as you connect to the database
 ![screenshot](./screenshots/monitoring_connections.png)
-
 Observe the “Replication” configuration
 ![screenshot](./screenshots/monitoring_replication.png)
 <br />
 <br />
-
 ### Part 2: Failover And Recovery
 
 #### secondaryDB before promotion
 [log_rr_before_promotion](logs/log_rr_before_promotion.txt)
 ![screenshot](./screenshots/rr_before_promotion.png)
 <br />
-
 #### secondaryDB after promotion
 [log_rr_after_promotion](logs/log_rr_after_promotion.txt)
 ![screenshot](./screenshots/rr_after_promotion.png)
 <br />
 <br />
-
 ### Part 3: Web Resiliency
 First of all, upload files under ./s3 folder into aws s3 and setup cloudfront
 
