@@ -6,9 +6,9 @@
 
 
 ## Project 1
-Create staging tables and analyzing tables in Redshift, drop all tables if they are existed
-$ python create_tables.py 
-
+* [Part 1: Data Durability And Recovery](#Part-1:-data-durability-and-recovery)
+* [Part 2: Failover And Recovery](#Part-2:-Failover-and-recovery)
+* [Part 3: Web Resiliency](#Part-3:-web-resiliency)
 
 ### Part 1: Data Durability And Recovery
 
@@ -21,6 +21,8 @@ Run ./cloudformation/vpc.yaml in region us-east-1
 
 ![screenshot](./screenshots/primary_subnet_routing.png)
 
+<br />
+
 #### Secondary-VPC
 Run ./cloudformation/vpc.yaml in regions us-west-2
 
@@ -29,6 +31,8 @@ Run ./cloudformation/vpc.yaml in regions us-west-2
 ![screenshot](./screenshots/secondaryVPC_subnets.png)
 
 ![screenshot](./screenshots/secondary_subnet_routing.png)
+
+<br />
 
 ### Primary RDS setup
 run ./cloudformation/rds_primary.yaml
@@ -39,6 +43,8 @@ run ./cloudformation/rds_primary.yaml
 
 ![screenshot](./screenshots/primaryDB_subnetgroup.png)
 
+<br />
+
 ### Primary RDS setup
 run ./cloudformation/rds_secondary.yaml
 
@@ -48,9 +54,17 @@ run ./cloudformation/rds_secondary.yaml
 
 ![screenshot](./screenshots/secondaryDB_subnetgroup.png)
 
+<br />
+
+### Availability Estimate
+[estimates](logs/estimates.txt)
+
+<br />
+
 ### Primary RDS usage
 
 [log_primary](logs/log_primary.txt)
+<br />
 
 ### Monitor database
 Observe the “DB Connections” to the database and how this metric changes as you connect to the database
@@ -58,34 +72,42 @@ Observe the “DB Connections” to the database and how this metric changes as 
 
 Observe the “Replication” configuration
 ![screenshot](./screenshots/monitoring_replication.png)
+<br />
+<br />
 
 ### Part 2: Failover And Recovery
 
 #### secondaryDB before promotion
 [log_rr_before_promotion](logs/log_rr_before_promotion.txt)
 ![screenshot](./screenshots/rr_before_promotion.png)
+<br />
 
 #### secondaryDB after promotion
 [log_rr_after_promotion](logs/log_rr_after_promotion.txt)
 ![screenshot](./screenshots/rr_after_promotion.png)
-
+<br />
+<br />
 
 ### Part 3: Web Resiliency
 First of all, upload files under ./s3 folder into aws s3 and setup cloudfront
 
-Build a resilient static web hosting solution in AWS. Create a versioned S3 bucket and configure it as a static website.
+Case 1 : Build a resilient static web hosting solution in AWS. Create a versioned S3 bucket and configure it as a static website.
 ![screenshot](./screenshots/s3_original.png)
+<br />
 
-“accidentally” change the contents of the website such that it is no longer serving the correct content
+Case 2 : “accidentally” change the contents of the website such that it is no longer serving the correct content
 ![screenshot](./screenshots/s3_season.png)
+<br />
 
-“recover” the website by rolling the content back to a previous
+Case 3 : “recover” the website by rolling the content back to a previous
 ![screenshot](./screenshots/s3_season_revert.png)
+<br />
 
-You will now “accidentally” delete contents from the S3 bucket. Delete “winter.jpg”
+Case 4 : You will now “accidentally” delete contents from the S3 bucket. Delete “winter.jpg”
 ![screenshot](./screenshots/s3_delete_marker.png)
 ![screenshot](./screenshots/s3_deletion.png)
+<br />
 
-“recover” winter.jpg object
+Case 5 :“recover” winter.jpg object
 ![screenshot](./screenshots/s3_delete_revert.png)
 

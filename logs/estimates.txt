@@ -1,0 +1,10 @@
+Write a paragraph or two describing the achievable recovery time objective (RTO) and recovery point objective (RPO) for this multi-AZ, multi-region database in term of : 
+
+
+Minimum RTO for a single AZ outage: minimum RTO is around 60 seconds. When Primary db is outage, a standby db will be promoted as primary to serve new workloads in as quickly as 60 seconds
+
+Minimum RTO for a single region outage: minimum RTO is around 1 hour for a replica which is promoted as master
+
+Minimum RPO for a single AZ outage :  minimum RPO is 0, it means no data loss when a single zone outage
+
+Minimum RPO for a single region outage : minimum RPO is around 25 minutes
