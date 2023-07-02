@@ -6,9 +6,9 @@
 
 
 ## Project 1
-* [Part 1: Data Durability And Recovery](#part-1)
-* [Part 2: Failover And Recovery](#part-2%:%-Failover-and-recovery)
-* [Part 3: Web Resiliency](#part-3%:%-web-resiliency)
+* [Part 1: Data Durability And Recovery](#part-1--data-durability-and-recovery)
+* [Part 2: Failover And Recovery](#part-2--failover-and-recovery)
+* [Part 3: Web Resiliency](#part-3--web-resiliency)
 
 ### Part 1: Data Durability And Recovery
 
