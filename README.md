@@ -21,6 +21,7 @@ You have been asked to plan and provision a cost-effective AWS infrastructure fo
 [Udacity_Diagram_1](./diagrams/Udacity_Diagram_1.pdf)
 
 <br />
+
 #### Part 2
 You have been asked to plan a SERVERLESS architecture schematic for a new application development project. The project requires the following AWS infrastructure and services.
 
@@ -28,6 +29,7 @@ You have been asked to plan a SERVERLESS architecture schematic for a new applic
 
 <br />
 <br />
+
 ### Task 2: Calculate Infrastructure Costs
 
 Use the AWS Pricing Calculator to estimate how much it will cost to run the services in your Part 1 diagram for one month.
@@ -47,8 +49,9 @@ Use the AWS Pricing Calculator to estimate how much it will cost to run the serv
 <br />
 
 ### Task 3: Configure Permissions
-![screenshot](./screenshot/udacity_password_policy.png)
 [UdacityCloudTrailLog](UdacityCloudTrailLog.csv)
+<br />
+![screenshot](./screenshot/udacity_password_policy.png)
 <br />
 <br />
 ### Task 4: Set up Cost Monitoring
@@ -56,6 +59,7 @@ Use the AWS Pricing Calculator to estimate how much it will cost to run the serv
 <br />
 <br />
 ### Task 5: Use Terraform to Provision AWS Infrastructure
+
 #### Part 1
 ![screenshot](./screenshot/Terraform_1_1.png)
 ![screenshot](./screenshot/Terraform_1_2.png)
