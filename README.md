@@ -39,7 +39,7 @@ Use the AWS Pricing Calculator to estimate how much it will cost to run the serv
 <br />
 
 #### Budget is reduced to maximum of $6,500
-When the budget is reduced, we prioterize to keep main resources such as EC2 , database ... to granrantee server is still able to handle same number of requests as before. Therefore, we can give up some capacity of storage or cloudfront edge cache, this can effect response time.
+When the budget is reduced, we prioterize to keep main resources such as EC2 , database ... to granrantee server is still able to handle same number of requests as before. Therefore, we can give up some capacity of storages or cloudfront edge cache, this can effect response time.
 
 [Reduced_Cost_Estimate](Reduced_Cost_Estimate.txt)
 <br />
