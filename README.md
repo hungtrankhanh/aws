@@ -39,10 +39,14 @@ Use the AWS Pricing Calculator to estimate how much it will cost to run the serv
 <br />
 
 #### Budget is reduced to maximum of $6,500
+When the budget is reduced, we prioterize to keep main resources such as EC2 , database ... to granrantee server is still able to handle same number of requests as before. Therefore, we can give up some capacity of storage or cloudfront edge cache, this can effect response time.
+
 [Reduced_Cost_Estimate](Reduced_Cost_Estimate.txt)
 <br />
 
 #### Budget has been increased to $20,000
+When the budge is increased, we can scale up or out EC2 , RDS to increase hanlding number of user requests per second. Moreover, we might consider to expand Cloudfront cache at edge locations, improve Application Load Balancer ability matching to high number of incomming requests , also buy more capacity of storages to save more user data and backup 
+
 [Increased_Cost_Estimate](Increased_Cost_Estimate.txt)
 
 <br />
@@ -50,6 +54,7 @@ Use the AWS Pricing Calculator to estimate how much it will cost to run the serv
 
 ### Task 3: Configure Permissions
 [UdacityCloudTrailLog](UdacityCloudTrailLog.csv)
+<br />
 <br />
 ![screenshot](./screenshot/udacity_password_policy.png)
 <br />

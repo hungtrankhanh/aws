@@ -1,0 +1,3 @@
+When Budget is reduced to maximum of $6,500 , we prioterize to keep main resources such as EC2 , database ... to granrantee server is still able to handle same number of requests as before. Therefore, we can give up some capacity of storage or cloudfront edge cache, this can effect response time.
+
+Budget has been increased to $20,000, we can scale up or out EC2 , RDS to increase hanlding number of user requests per second. Moreover, we might consider to expand Cloudfront cache at edge locations, improve Application Load Balancer ability matching to high number of incomming requests , also buy more capacity of storages to save more user data and backup 
