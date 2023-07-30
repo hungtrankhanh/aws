@@ -21,3 +21,5 @@ Initial_Cost_Estimate,US East (N. Virginia),,Amazon Elastic IP,0,0,0.00,USD,,"Nu
 
 Acknowledgement
 "* AWS Pricing Calculator provides only an estimate of your AWS fees and doesn't include any taxes that might apply. Your actual fees depend on a variety of factors, including your actual usage of AWS services."
+
+Rationale : Budget has been increased to $20,000, we can scale up or out EC2 , RDS to increase hanlding number of user requests per second. Moreover, we might consider to expand Cloudfront cache at edge locations, improve Application Load Balancer ability matching to high number of incomming requests , also buy more capacity of storages to save more user data and backup 
