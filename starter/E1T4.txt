@@ -1,0 +1,7 @@
+Based on the architecture diagram, and the steps you have taken so far to upload data and access the application web service, identify at least 2 obvious poor practices as it relates to security.  Include justification.
+
+# Poor practice 1
+Security Group - WebAppSG allowed access from AttackInstanceG. it should only accessible from AppLoadBalancerSG
+
+# Poor practice 2
+IAM role and Policy didn't restict users who can aaply the role
